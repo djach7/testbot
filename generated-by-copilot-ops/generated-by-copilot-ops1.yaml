@@ -1,0 +1,33 @@
+
+#################################################################
+##BEGIN TYPED OUTPUT DO NOT DELETE LINE BELOW THIS NOTE
+#################################################################
+
+## At the bottom of this document, add the kind, namespace and the rest of the
+## YAML the listener will be
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: listener
+  labels:
+    app: listener
+  namespace: listener-ns
+
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: listener-service
+  labels:
+    app: listener
+  namespace: listener-ns
+spec:
+  selector:
+    app: listener
+  ports:
+  - name: listener-port
+    port: 8080
+    targetPort: listener-port
+    protocol: TCP
