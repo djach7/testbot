@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: events-deployment
+  namespace:
+  labels:
+    app: events
+spec:
+  selector:
+    matchLabels:
+      app: events
+  template:
+    metadata:
+      labels:
+        app: events
+    spec:
+      containers:
+      - name: php-fpm
+        image: rootlab/phpfpm:1.1
+      - name: nginx
+        image: rootlab/cpugo-nginx:1.1
+
+# A Kubernetes Service of type 'ClusterIP'
+apiVersion: v1
+kind: Service
+metadata:
+  name: events
+  namespace:
+  labels:
+    app: events
+spec:
+  type: ClusterIP
+  selector:
+    app: events
+  ports:
+  - name: http
+    protocol: TCP
+    targetPort: 80
+    port: 80
+
