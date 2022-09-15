@@ -1,0 +1,19 @@
+seterr 1
+
+template=#   infra: infrastructure:infra-tst
+template(1)# (1)
+template(1)# approve
+template(1)# cmd:
+template(1)#    description: playbook example
+template(1)#    retrieve secret from generic secret engine
+template(1)#    execute a command 
+template(1)#    write to generic secret engine
+template(1)#    interpolate with variables
+        $$$ type a:
+        $$$ type b:
+        $$$ type c:
+template(1)# variant:
+template(1)#   use: params:varFile/command_parameters_file.yml
+template(1)#   setVariable:
+## $$$ set one:
+## $$$ set two:
