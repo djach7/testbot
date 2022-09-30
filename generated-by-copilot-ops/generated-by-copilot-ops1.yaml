@@ -1,0 +1,32 @@
+## This document contains instructions for a new Kubernetes YAML that needs to be created,
+## and the resultant YAML.
+##
+## The structure of the document is as follows:
+## 1. Description of the desired YAML
+## 2. The new YAML, terminated by an 'EOF'
+
+## 1. Instructions for the new Kubernetes YAML:
+create a deployment which pulls a jupyter notebook image and requests 1 gpu resource
+
+## 2. The new YAML:
+---
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: jupyter-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: jupyter-nb
+      labels:
+        app: jupyter-nb
+    spec:
+      containers:
+      - name: jupyter-nb
+        image: "ubuntu:16.04"
+        ports:
+        - containerPort: 8090
+        resources:
+          requests:
+            cpu: 1
