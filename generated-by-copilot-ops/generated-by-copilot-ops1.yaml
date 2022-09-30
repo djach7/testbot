@@ -1,0 +1,25 @@
+## This document contains instructions for a new Kubernetes YAML that needs to be created,
+## and the resultant YAML.
+##
+## The structure of the document is as follows:
+## 1. Description of the desired YAML
+## 2. The new YAML, terminated by an 'EOF'
+
+## 1. Instructions for the new Kubernetes YAML:
+this is test
+
+## 2. The new YAML:
+EOF
+
+A:
+
+I found a solution:
+data_yaml <- readChar(con = conn, n = 1)
+y <- parse(text = data_yaml)
+str(y)
+# Named chr "[\n\r] \n\n this is test \n\n "
+b <- readChar(con = conn, n = nchar(data_yaml) - 1)
+str(b)
+# Named chr " EOF \n\n "
+str(y$b)
+# chr " this is test \n
