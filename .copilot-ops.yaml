@@ -1,4 +1,0 @@
-filesets:
-  - name: isthisworking
-    files:
-      - examples/*.yaml
