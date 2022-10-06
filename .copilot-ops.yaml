@@ -1,1 +1,4 @@
-ntokens: 300
+filesets:
+  - name: isthisworking
+    files:
+      - examples/*.yaml
