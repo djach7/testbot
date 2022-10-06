@@ -1,1 +1,4 @@
 backend: bloom
+bloom:
+  generateParams:
+    - max_new_tokens: 150
