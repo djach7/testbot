@@ -1,0 +1,4 @@
+filesets:
+  - name: doesthisexist
+    files:
+      - examples/*.yaml
