@@ -1,3 +1,14 @@
 backend: bloom
-bloom:
-  url: https://api-inference.huggingface.co/models/bigscience/bloom
+filesets:
+  - name: examples
+    files:
+      - examples/*.yaml
+  - name: stock-data
+    files:
+      - examples/stock-data.yaml
+  - name: cluster-scope-overlays
+    files:
+    - examples/stale_dev_overlay/*.yaml
+  - name: app1
+    files:
+      - examples/app1/*.yaml
