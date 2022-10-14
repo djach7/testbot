@@ -1,0 +1,30 @@
+## This document contains instructions for a new Kubernetes YAML that needs to be created,
+## and the resultant YAML.
+##
+## The structure of the document is as follows:
+## 1. Description of the desired YAML
+## 2. The new YAML, terminated by an 'EOF'
+
+## 1. Instructions for the new Kubernetes YAML:
+create a deployment which pulls a Jupyter Notebook image and requests 1 GPU resource
+
+## 2. The new YAML:
+EOF
+
+deployment.yaml
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: nvidia-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: webapp
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml -t k8s
+    spec:
+      containers:
+      - name: nvidia-deployment-container
+        image: quay.io/nvidia/jupyterlab/jupy
