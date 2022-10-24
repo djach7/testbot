@@ -45,4 +45,5 @@ jobs:
         namespace: ${{ env.OPENSHIFT_NAMESPACE }}
 
     # Run a script to create a new app or update the current one with the previously pushed container image
+    - run: kubectl apply -f generated-by-copilot-ops/ --dry-run
     - run: kubectl apply -f generated-by-copilot-ops/ 
