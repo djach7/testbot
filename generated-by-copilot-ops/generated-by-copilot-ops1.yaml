@@ -6,7 +6,7 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: jupyter-notebook
+      pizza: jupyter-notebook
   template:
     metadata:
       labels:
