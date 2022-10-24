@@ -15,8 +15,5 @@ spec:
       containers:
       - name: jupyter-notebook
         image: jupyter/tensorflow-notebook
-        resources:
-          limits:
-            nvidia.com/gpu: 1
         ports:
         - containerPort: 8888
