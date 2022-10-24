@@ -33,16 +33,10 @@ jobs:
       id: checkout
       uses: actions/checkout@v2
 
-    # The path the image was pushed to is now stored in ${{ steps.push-to-registry.outputs.registry-path }}
-
-    # https://github.com/redhat-actions/oc-login#readme
-    - name: Log in to OpenShift 
-      uses: redhat-actions/oc-login@v1
-      with:
-        openshift_server_url: ${{ env.OPENSHIFT_SERVER }}
-        openshift_token: ${{ env.OPENSHIFT_TOKEN }}
-        insecure_skip_tls_verify: true
-        namespace: ${{ env.OPENSHIFT_NAMESPACE }}
+    - name: Kind Cluster
+      # You may pin to the exact commit or the version.
+      # uses: helm/kind-action@9e8295d178de23cbfbd8fa16cf844eec1d773a07
+      uses: helm/kind-action@v1.4.0
 
     # Run a script to create a new app or update the current one with the previously pushed container image
-    - run: kubectl apply -f generated-by-copilot-ops/ --dry-run
+    - run: kubectl apply -f generated-by-copilot-ops/
