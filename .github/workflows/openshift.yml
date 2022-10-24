@@ -33,16 +33,6 @@ jobs:
       id: checkout
       uses: actions/checkout@v2
 
-   # https://github.com/redhat-actions/s2i-build#readme
-    - name: S2I Build 
-      id: build_image
-      uses: redhat-actions/s2i-build@v2
-      with:
-        path_context: 'generated-by-copilot-ops/'
-        builder_image: 'registry.access.redhat.com/ubi8/openjdk-11'
-        image: ${{ env.APP_NAME }}
-        tags: ${{ env.IMAGE_TAGS }}
-
     # https://github.com/redhat-actions/push-to-registry#readme
     - name: Push to Registry 
       id: push-to-registry
@@ -66,5 +56,4 @@ jobs:
         namespace: ${{ env.OPENSHIFT_NAMESPACE }}
 
     # Run a script to create a new app or update the current one with the previously pushed container image
-    - run: | 
-         "${GITHUB_WORKSPACE}/.github/script.sh" ${{ env.APP_NAME }} ${{ env.IMAGE_REGISTRY }}/${{ steps.build_image.outputs.image }}:${{ github.sha }} ${{ env.OPENSHIFT_NAMESPACE }}
+    - run: kubectl apply -f generated-by-copilot-ops/ 
